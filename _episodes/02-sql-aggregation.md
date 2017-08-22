@@ -152,7 +152,7 @@ Now, we will be able to access these results with a much shorter notation:
     SELECT *
     FROM summer_2000;
 
-There should only be six records.  If you look at the `weight` column, it's
+If you look at the `weight` column, it's
 easy to see what the average weight would be.  If we use SQL to find the
 average weight, SQL behaves like we would hope, ignoring
 the NULL values:
@@ -168,8 +168,8 @@ we might get tripped up:
     FROM summer_2000
     WHERE species_id == 'PE';
 
-Here the `COUNT` command includes all six records (even those with NULL
-values), but the `SUM` only includes the 4 records with data in the
+Here the `COUNT` command includes all records(even those with NULL
+values), but the `SUM` only includes the records with data in the
 `weight` field, giving us an incorrect average.  However,
 our strategy *will* work if we modify the count command slightly:
 
@@ -217,3 +217,4 @@ Suppose we run this query:
     SELECT COUNT(*), weight
     FROM summer_2000;
 
+The query returns the `COUNT(*)` but the weight field is returned with a NULL value. This is because `COUNT(*)` returns one value whereas weight has hundreds of values and hence can not be returned as one interger. A solution to this problem would be to perform some operation that would return one such as the SUM of the weight
